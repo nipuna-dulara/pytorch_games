@@ -20,6 +20,11 @@ class Agent:
         self.gamma = 0.9
         self.memory = deque(maxlen=MAX_MEMORY)
         self.model = Linear_QNet(11, 256, 3)
+        model_loaded = self.model.load()
+        if model_loaded:
+            print("Loaded saved model")
+        else:
+            print("No saved model found, starting from scratch")
         self.trainer = QTrainer(self.model, lr=LR, gamma=self.gamma)
 
     def get_state(self, game):
