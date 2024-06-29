@@ -5,7 +5,7 @@ from collections import deque
 from snake_game import SnakeGame, Direction, Point
 from model import Linear_QNet, QTrainer
 import matplotlib.pyplot as plt
-from ipython import display
+from IPython import display
 
 plt.ion()
 MAX_MEMORY = 100_000
@@ -67,7 +67,7 @@ class Agent:
         self.memory.append((state, action, reward, next_state, done))
 
     def train_long_memory(self):
-        if self.memory.length > BATCH_SIZE:
+        if len(self.memory) > BATCH_SIZE:
             mini_sample = random.sample(self.memory, BATCH_SIZE)
         else:
             mini_sample = self.memory
