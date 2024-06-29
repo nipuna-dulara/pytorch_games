@@ -37,6 +37,7 @@ class QTrainer:
         self.lr = lr
         self.gamma = gamma
         self.model = model
+        self.iterations = 0
         self.optimizer = optim.Adam(model.parameters(), lr=self.lr)
         self.criterion = nn.MSELoss()
 
@@ -66,6 +67,6 @@ class QTrainer:
         loss.backward()
         self.optimizer.step()
 
-        self.iterations += 1
-        if self.iterations % 1000 == 0:
-            self.model.save()
+        # self.iterations += 1
+        # if self.iterations % 1000 == 0:
+        #     self.model.save()
